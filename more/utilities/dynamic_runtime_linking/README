@@ -1,0 +1,37 @@
+Dynamic runtime linking
+
+Like all dynamic libraries, LJM can be linked implicitly (statically) during
+startup or it can be linked explicitly (dynamically) during program execution.
+The technique to do so differs by operating system.
+
+
+Windows
+
+LJM example: windows_dynamic_runtime_linking.c
+
+To dynamically link LJM during runtime, use the function LoadLibrary to load
+LabJackM.dll, then use the function GetProcAddress to get the addressse of given
+LabJackM functions as needed. See the Microsoft article "Using Run-Time Dynamic
+Linking" for more information:
+
+https://msdn.microsoft.com/en-us/library/windows/desktop/ms686944%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396
+
+
+Linux
+
+To dynamically link LJM during runtime, use the function dlopen to load
+LabJackM.so, then use the function dlsym to get the addresses of given LabJackM
+functions as needed. See `man dlopen` and `man dlsym` for more information, or
+see this article:
+
+http://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html
+
+
+macOS
+
+To dynamically link LJM during runtime, use the function dlopen to load
+LabJackM.dylib, then use the function dlsym to get the addresses of given
+LabJackM functions as needed. See the Apple Developer documentation for "Using
+Runtime-Loaded Libraries":
+
+https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/UsingDynamicLibraries.html#//apple_ref/doc/uid/TP40002182-SW13

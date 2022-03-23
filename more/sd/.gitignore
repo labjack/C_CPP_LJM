@@ -1,0 +1,6 @@
+change_directory
+delete_file
+get_disk_info
+list_directory
+print_working_directory
+read_file

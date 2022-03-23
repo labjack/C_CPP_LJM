@@ -1,0 +1,40 @@
+Help("""
+Invocation:
+
+    Make:
+    $ python3 scons-local-3.1.1/scons.py
+
+    Clean:
+    $ python3 scons.py -c
+
+    Quiet:
+    $ scons -Q
+
+""")
+
+import os
+
+link_libs = 'LabJackM'
+ccflags = '-g -Wall'
+env = Environment(CCFLAGS = ccflags)
+
+examples_src = Split("""
+    stream_in_with_aperiodic_stream_out.cpp
+    periodic_stream_out.cpp
+    advanced_aperiodic_stream_out.cpp
+    stream_basic.c
+    stream_basic_with_stream_out.c
+    stream_burst.c
+    stream_callback.c
+    stream_external_clock.c
+    stream_out_only.c
+    stream_out_update.c
+    stream_sequential_ain.c
+    stream_triggered.c
+""")
+
+# Make
+for example in examples_src:
+    lib = env.Program(target = os.path.splitext(example)[0], source = example, LIBS = link_libs)
+
+

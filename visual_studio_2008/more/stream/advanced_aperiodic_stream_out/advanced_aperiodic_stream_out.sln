@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{95BF0B17-B5B2-4AC6-B34D-6979C350B34B}") = "advanced_aperiodic_stream_out", "advanced_aperiodic_stream_out.vcproj", "{F5A13ADD-36DE-476D-A31B-1C7006E5CCCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5A13ADD-36DE-476D-A31B-1C7006E5CCCD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F5A13ADD-36DE-476D-A31B-1C7006E5CCCD}.Debug|Win32.Build.0 = Debug|Win32
+		{F5A13ADD-36DE-476D-A31B-1C7006E5CCCD}.Debug|x64.ActiveCfg = Debug|x64
+		{F5A13ADD-36DE-476D-A31B-1C7006E5CCCD}.Debug|x64.Build.0 = Debug|x64
+		{F5A13ADD-36DE-476D-A31B-1C7006E5CCCD}.Release|Win32.ActiveCfg = Release|Win32
+		{F5A13ADD-36DE-476D-A31B-1C7006E5CCCD}.Release|Win32.Build.0 = Release|Win32
+		{F5A13ADD-36DE-476D-A31B-1C7006E5CCCD}.Release|x64.ActiveCfg = Release|x64
+		{F5A13ADD-36DE-476D-A31B-1C7006E5CCCD}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

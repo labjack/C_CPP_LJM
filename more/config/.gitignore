@@ -1,0 +1,4 @@
+read_config
+read_device_name_string
+write_device_name_string
+write_power_config

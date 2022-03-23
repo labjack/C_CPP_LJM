@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{D8B4AE32-B7BB-46BC-AF67-6D3C8EE8EB56}") = "stream_in_with_aperiodic_stream_out", "stream_in_with_aperiodic_stream_out.vcproj", "{2967AECA-6797-4B20-8F59-37585A1CBBBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2967AECA-6797-4B20-8F59-37585A1CBBBF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2967AECA-6797-4B20-8F59-37585A1CBBBF}.Debug|Win32.Build.0 = Debug|Win32
+		{2967AECA-6797-4B20-8F59-37585A1CBBBF}.Debug|x64.ActiveCfg = Debug|x64
+		{2967AECA-6797-4B20-8F59-37585A1CBBBF}.Debug|x64.Build.0 = Debug|x64
+		{2967AECA-6797-4B20-8F59-37585A1CBBBF}.Release|Win32.ActiveCfg = Release|Win32
+		{2967AECA-6797-4B20-8F59-37585A1CBBBF}.Release|Win32.Build.0 = Release|Win32
+		{2967AECA-6797-4B20-8F59-37585A1CBBBF}.Release|x64.ActiveCfg = Release|x64
+		{2967AECA-6797-4B20-8F59-37585A1CBBBF}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
