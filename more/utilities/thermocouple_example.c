@@ -1,11 +1,13 @@
 /**
  * Name: thermocouple_example.c
  * Desc: Demonstrates thermocouple configuration and  measurement
- *       If using a T4, this example assumes use of the LJTick-InAmp
- *       If using a T7/T8, this example uses the TC AIN_EF
- *       https://labjack.com/support/app-notes/thermocouples
+ *		This example demonstrates usage of the thermocouple AIN_EF (T7/T8 only)
+ *		and a solution using our LJTick-InAmp (commonly used with the T4)
  *
  * Relevant Documentation:
+ *
+ * Thermocouple App-Note:
+ *		https://labjack.com/support/app-notes/thermocouples
  *
  * LJM Library:
  *	LJM Library Installer:
@@ -24,6 +26,8 @@
  *		https://labjack.com/support/software/api/modbus/modbus-map
  *	Analog Inputs:
  *		https://labjack.com/support/datasheets/t-series/ain
+ *	Thermocouple AIN_EF:
+ *		https://labjack.com/support/datasheets/t-series/ain/extended-features/thermocouple
 **/
 
 // For printf
@@ -54,11 +58,15 @@ typedef struct {
 	//     LJM_ttS (val=6007)
 	//     LJM_ttT (val=6008)
 	//     LJM_ttC (val=6009)
+	// Note that the values above do not align with the AIN_EF index values
+	// or order. In this example, we demonstrate a lookup table to convert
+	// our thermocouple constant to the correct index when using the AIN_EF
 	long tcType;
 
-	// If taking a differential reading on a T7, posChannel should be the even
-	// numbered AIN channel, and the negative channel should be connected to
-	// the positive AIN channel plus one. Example: posChannel=0, negChannel=1
+	// If taking a differential reading on a T7, posChannel should be an even
+    // numbered AIN connecting signal+, and signal- should be connected to
+    // the positive AIN channel plus one.
+    // Example: signal+=posChannel=0 (AIN0), signal-=negChannel=1 (AIN1)
 	int posChannel;
 
 	// negChannel value of 199 indicates single ended measurement
@@ -211,7 +219,9 @@ int main()
 
 	PrintDeviceInfo(deviceType, connectionType, serialNumber, ipAddress, portOrPipe, packetMaxBytes);
 
-	// Set the resolution index to the highest available setting
+	// Set the resolution index to the default setting (value=0)
+	// Default setting has different meanings depending on the device.
+	// See our AIN documentation (link above) for more information
 	err = LJM_eWriteAddress(handle, 41500+tcData.posChannel, LJM_UINT16, 0);
 	ErrorCheck(err, "Setting AIN resolution index");
 
