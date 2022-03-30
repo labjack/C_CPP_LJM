@@ -162,7 +162,7 @@ void GetReadingsInAmp(int handle, TCData tcData) {
 	CJTemp = CJTemp * tcData.CJCSlope + tcData.CJCOffset;
 
 	// Convert voltage reading to the thermocouple temperature.
-	err = LJM_TCVoltsToTemp(LJM_ttK, TCVolts, CJTemp, &TCTemp);
+	err = LJM_TCVoltsToTemp(tcData.tcType, TCVolts, CJTemp, &TCTemp);
 	ErrorCheck(err, "GetReadingsInAmp: Calculating TCTemp(K)");
 
 	// Convert to temp units for display
