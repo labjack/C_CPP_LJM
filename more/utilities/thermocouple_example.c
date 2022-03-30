@@ -138,7 +138,7 @@ void GetReadingsInAmp(int handle, TCData tcData) {
 	int err;
 	double TCTemp, TCVolts, CJTemp;
 
-	err = LJM_eReadAddress(handle, tcData.posChannel, LJM_FLOAT32, &TCVolts);
+	err = LJM_eReadAddress(handle, 2*tcData.posChannel, LJM_FLOAT32, &TCVolts);
 	ErrorCheck(err, "GetReadingsInAmp: Reading TC AIN");
 
 	// Account for LJTick-InAmp scaling
