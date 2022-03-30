@@ -111,7 +111,17 @@ void SetupAIN_EF(int handle, TCData tcData) {
 	// For setting up the AIN#_EF_CONFIG_A (temperature units)
 	aAddresses[1] = 9300+2*tcData.posChannel;
 	aTypes[1] = LJM_UINT32;
-	aValues[1] = tcData.tempUnits;
+	switch(tcData.tempUnits) {
+		case DEGK:
+			aValues[1] = 0;
+			break;
+		case DEGC:
+			aValues[1] = 1;
+			break;
+		case DEGF:
+			aValues[1] = 2;
+			break;
+	}
 
 	// For setting up the AIN#_EF_CONFIG_B (CJC address)
 	aAddresses[2] = 9600+2*tcData.posChannel;
@@ -159,17 +169,17 @@ void GetReadingsInAmp(int handle, TCData tcData) {
 	switch(tcData.tempUnits){
 		case DEGK:
 			// Nothing to do
-		break;
+			break;
 
 		case DEGC:
 			TCTemp = TCTemp-273.15;
 			CJTemp = CJTemp-273.15;
-		break;
+			break;
 
 		case DEGF:
 			TCTemp = (1.8*TCTemp)-459.67;
 			CJTemp = (1.8*CJTemp)-459.67;
-		break;
+			break;
 	}
 	printf("TCTemp: %lf %c,\t TCVolts: %lf,\tCJTemp: %lf %c\n",
 		TCTemp, (char)tcData.tempUnits, TCVolts, CJTemp, (char)tcData.tempUnits);
@@ -196,7 +206,6 @@ int main()
 {
 	int err, handle, i, deviceType, connectionType, serialNumber;
 	int ipAddress, portOrPipe, packetMaxBytes;
-	double TCTemp, TCVolts, CJTemp = 0.0;
 	// initialize tcData struct to valid values.
 	TCData tcData = {
 		LJM_ttK,	// Type K thermocouple
