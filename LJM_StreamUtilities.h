@@ -290,7 +290,7 @@ void EnableFIO0PulseOut(int handle, int pulseRate, int numPulses)
 	WriteNameOrDie(handle, "DIO0_EF_INDEX", 2);
 	WriteNameOrDie(handle, "DIO0_EF_OPTIONS", 0);
 	WriteNameOrDie(handle, "DIO0", 0);
-	WriteNameOrDie(handle, "DIO0_EF_CONFIG_A", 0);
+	WriteNameOrDie(handle, "DIO0_EF_CONFIG_A", rollValue/2);
 	WriteNameOrDie(handle, "DIO0_EF_CONFIG_B", 0);
 	WriteNameOrDie(handle, "DIO0_EF_CONFIG_C", numPulses);
 	WriteNameOrDie(handle, "DIO0_EF_ENABLE", 1);
