@@ -1,0 +1,11 @@
+*.o
+*.dblite
+*__pycache__
+*.vcxproj\.*
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+.vs/
