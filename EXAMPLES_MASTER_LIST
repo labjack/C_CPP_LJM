@@ -100,6 +100,7 @@ more/utilities/read_ljm_config.c
 more/utilities/SConstruct
 more/utilities/set_timeout.cpp
 more/utilities/stepwise_feedback.c
+more/utilities/stream_log_testing.c
 more/utilities/t7_tcp_configure.c
 more/utilities/thermocouple_example.c
 more/watchdog/make.sh

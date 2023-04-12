@@ -27,6 +27,7 @@ examples_src = Split("""
     read_ljm_config.c
     set_timeout.cpp
     stepwise_feedback.c
+    stream_log_testing.c
     t7_tcp_configure.c
     thermocouple_example.c
 """)

@@ -126,6 +126,8 @@ visual_studio_2008/more/utilities/set_timeout/set_timeout.sln
 visual_studio_2008/more/utilities/set_timeout/set_timeout.vcproj
 visual_studio_2008/more/utilities/stepwise_feedback/stepwise_feedback.sln
 visual_studio_2008/more/utilities/stepwise_feedback/stepwise_feedback.vcproj
+visual_studio_2008/more/utilities/stream_log_testing/stream_log_testing.sln
+visual_studio_2008/more/utilities/stream_log_testing/stream_log_testing.vcproj
 visual_studio_2008/more/utilities/t7_tcp_configure/t7_tcp_configure.sln
 visual_studio_2008/more/utilities/t7_tcp_configure/t7_tcp_configure.vcproj
 visual_studio_2008/more/utilities/thermocouple_example/thermocouple_example.sln

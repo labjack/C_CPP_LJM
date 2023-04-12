@@ -1,6 +1,10 @@
 Version History
 ---------------
 
+2023-04-12 (LJM 1.2100)
+ - Upgraded VS projects to VS2019
+ - Added stream_log_testing.c example
+
 2021-08-20 (LJM 1.2100)
  - Updated thermocouple_example.c
  - Restructured examples and utility headers to compile with C89 standard (for older VS builds)
