@@ -48,6 +48,8 @@
 #include "../../LJM_StreamUtilities.h"
 
 // Set FIO0 to pulse out. See EnableFIO0PulseOut()
+// FIO0 could be connected to CIO3 as the clock source for
+// externally clocked stream.
 #define FIO0_PULSE_OUT 1
 
 #define SCAN_RATE 1000
@@ -175,8 +177,10 @@ void StreamReturnAllOrNone(int handle)
 	HardcodedConfigureStream(handle);
 
 	SetupExternalClockStream(handle);
-
-	if (FIO0_PULSE_OUT) {
+	
+	// If using FIO0 as the externally clocked stream source (CIO3)
+	if (FIO0_PULSE_OUT) { 
+		// Set FIO0 to output pulses at the desired scan rate and number of pulses
 		EnableFIO0PulseOut(handle, SCAN_RATE, SCAN_RATE * NUM_LOOP_ITERATIONS + 5000);
 	}
 
