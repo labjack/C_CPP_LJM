@@ -11,3 +11,14 @@ cmake --build .
 cd build
 ctest -C Debug -V .
 ```
+
+# Installing with CMake
+```
+cmake --install .
+```
+
+or
+
+```
+cmake --install . --config Debug
+```

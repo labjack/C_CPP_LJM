@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
+
+set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install CACHE PATH "Install Path")
+
 project(C_CPP_LJM C)
 
 enable_testing()
@@ -35,7 +38,7 @@ foreach(DIR IN LISTS SRC_DIRS)
     string(REPLACE "/" "_" FULL_NAME "${PATH}/${NAME}")
 
     add_executable(${FULL_NAME} ${SRC})
-    
+
     target_link_libraries(${FULL_NAME} PUBLIC LabJackM)
 
     add_test(NAME ${FULL_NAME} COMMAND ${FULL_NAME})
