@@ -39,11 +39,17 @@ foreach(DIR IN LISTS SRC_DIRS)
 
     add_executable(${FULL_NAME} ${SRC})
 
-    target_link_libraries(${FULL_NAME} PUBLIC LabJackM)
+    if(NOT "dynamic_runtime_linking" STREQUAL ${NAME}) 
+      target_link_libraries(${FULL_NAME} PUBLIC LabJackM)
+    else()
+      # Linking for dynamic_runtime_linking example.
+      if(NOT WIN32)
+        target_link_libraries(${FULL_NAME} PUBLIC dl)
+      endif()
+    endif()
 
     add_test(NAME ${FULL_NAME} COMMAND ${FULL_NAME})
 
     install(TARGETS ${FULL_NAME} RUNTIME DESTINATION ${DIRECTORY})
-
   endforeach()
 endforeach()
