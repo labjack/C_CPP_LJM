@@ -8,9 +8,7 @@ This examples package includes:
 
 - .c/.cpp example programs
 - utility .h headers
-- a Python build system for Mac/Linux
-- a Visual Studio 2008 build system for Windows
-- Windows .exe executable files
+- a CMake build system
 
 
 #### Examples Organization
@@ -29,12 +27,9 @@ Examples folder:
     LJM_StreamUtilities.h
         Contains stream-related helper functions.
 
-    LabJackMModbusMap.h
-        Contains definitions describing the available device registers.
-
     basic/
-        Contains examples showing the LJM Easy functions for performing
-        device operations. Also contains a looping read/write example.
+        Contains examples showing the LJM Easy functions for performing device
+        operations. Also contains a looping read/write example.
 
     more/
 
@@ -85,10 +80,10 @@ Examples folder:
 
         utilities/
             Contains utility programs, including a device info displayer, a
-            thermocouple example, and demonstrations
-            of functions such as LJM_WriteRaw/LJM_ReadRaw, LJM_NamesToAddresses,
-            LJM_ErrorToString, and the LJM library config functions, and a
-            dynamic runtime linking example for Windows.
+            thermocouple example, and demonstrations of functions such as
+            LJM_WriteRaw/LJM_ReadRaw, LJM_NamesToAddresses, LJM_ErrorToString,
+            and the LJM library config functions, and a dynamic runtime linking
+            example.
 
         watchdog/
             Contains examples showing how to read and write watchdog
@@ -99,31 +94,22 @@ Examples folder:
             and properties.
 
 
-#### Build systems
+#### Build system
 
-Windows:
+The LJM C/C++ examples use the CMake build system version 3.12+. CMake is
+available for download here:
 
-    The `examples\visual_studio_2008` directory contains a .sln and a .vcproj
-    file for each example program.
+https://cmake.org/
 
-    Newer versions of Visual Studio work with these .sln and .vcproj files,
-    though you will need to run the automatic upgrade process when opening them.
+If you are are running in a package managed environment, such as Linux
+distributions, it is recommended to download and install CMake through your
+package manager.
 
-    For Visual Studio 2017, you may get the following error:
+CMake requires a C/C++ compiler on your system, and will use that compiler for
+generation/compilation. If you have Visual Studio or Xcode installed, project
+files will be generated.
 
-        Error   C1083   Cannot open include file: 'stdio.h': No such file or directory
-
-    In this case, you need to switch the project SDK version from 8.1 to 10:
-        1. Open the Properties window for the project (e.g. in the Solution
-           Explorer, right click on the project - not the solution)
-        2. Change Configuration Properties -> General -> Target Platform Version
-           to something like 10.0.14393.0
-
-Mac/Linux:
-
-    Each directory in `examples/` contains a `make.sh` script that will run the
-    corresponding SConstruct file. Additionally, the script
-    `examples/make_all.sh` will call all the `make.sh` scripts.
-
-    SConstruct is a Python-based build system. A local copy is included in
-    `scons-local-3.1.1`, though you will need Python installed.
+CMake build instructions can be found in the CMAKE.md file. It builds all
+examples in this package. Following the instructions, build files will be in the
+"build" folder and executables made with "cmake --install" will be in the
+"install" folder.
