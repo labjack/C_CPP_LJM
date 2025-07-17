@@ -106,8 +106,7 @@ distributions, it is recommended to download and install CMake through your
 package manager.
 
 CMake requires a C/C++ compiler on your system, and will use that compiler for
-generation/compilation. If you have Visual Studio or Xcode installed, project
-files will be generated.
+generation/compilation.
 
 CMake build instructions can be found in the CMAKE.md file. It builds all
 examples in this package. Following the instructions, build files will be in the
