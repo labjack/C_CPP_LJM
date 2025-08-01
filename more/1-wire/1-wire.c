@@ -16,7 +16,10 @@
  *		https://labjack.com/support/software/api/ljm
  *	Opening and Closing:
  *		https://labjack.com/support/software/api/ljm/function-reference/opening-and-closing
- *	Multiple Value Functions(such as eReadNames):
+ *	eWriteName:
+ *		https://labjack.com/support/software/api/ljm/function-reference/ljmewritename
+ *	Multiple Value Functions(such as eWriteNames, eReadNames,
+ *	eWriteNameByteArray and eReadNameByteArray):
  *		https://labjack.com/support/software/api/ljm/function-reference/multiple-value-functions
  *
  * T-Series and I/O:
@@ -133,6 +136,7 @@ int main()
     PrintDeviceInfoFromHandle(handle);
     printf("\n");
 
+    // Search for the 1-Wire device, and get its ROM ID and path.
     oneWire(
         handle,
         sens,
