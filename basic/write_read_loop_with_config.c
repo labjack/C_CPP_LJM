@@ -14,11 +14,12 @@
  *		https://labjack.com/support/software/api/ljm
  *	Opening and Closing:
  *		https://labjack.com/support/software/api/ljm/function-reference/opening-and-closing
- *	Single Value Functions(such as eReadName):
+ *	Single Value Functions(such as eWriteName):
  *		https://labjack.com/support/software/api/ljm/function-reference/single-value-functions
- *	Multiple Value Functions(such as eWriteNames):
+ *	Multiple Value Functions(such as eWriteNames and eReadNames):
  *		https://labjack.com/support/software/api/ljm/function-reference/multiple-value-functions
- *	Timing Functions(such as StartInterval):
+ *	Timing Functions(such as StartInterval, WaitForNextInterval and
+ *	CleanInterval):
  *		https://labjack.com/support/software/api/ljm/function-reference/timing-functions
  *
  * T-Series and I/O:
@@ -105,14 +106,28 @@ int main()
 		// The T4 only has single-ended analog inputs.
 		// The range of AIN0-AIN3 is +/-10 V.
 		// The range of AIN4-AIN11 is 0-2.5 V.
+
+		// Settling = Auto (0)
+		WriteNameOrDie(handle, "AIN0_SETTLING_US", 0);
+		printf("    AIN0_SETTLING_US : %d\n", 0);
 	}
 	else { // LabJack T7 and T8 configuration
 
-		// T8 does not support negative channel configs
-		if (deviceType == LJM_dtT7){
+		// T8 does not support negative channel and settling configs
+		if (deviceType == LJM_dtT7) {
 			// Negative Channel = 199 (Single-ended)
 			WriteNameOrDie(handle, "AIN0_NEGATIVE_CH", 199);
 			printf("    AIN0_NEGATIVE_CH : %d\n", 199);
+
+			// Settling = Auto (0)
+			WriteNameOrDie(handle, "AIN0_SETTLING_US", 0);
+			printf("    AIN0_SETTLING_US : %d\n", 0);
+		}
+
+		if (deviceType == LJM_dtT8) {
+			// AIN sampling rate, in Hz = Auto (0)
+			WriteNameOrDie(handle, "AIN_SAMPLING_RATE_HZ", 0);
+			printf("    AIN_SAMPLING_RATE_HZ : %d\n", 0);
 		}
 
 		// Set range for a max 10V input; the device will automatically select
