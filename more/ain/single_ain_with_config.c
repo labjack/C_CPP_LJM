@@ -63,14 +63,22 @@ int main()
 	WriteNameOrDie(handle, "AIN0_RESOLUTION_INDEX", 0);
 	// Range/gain configs only apply to the T7/T8
 	if (deviceType != LJM_dtT4) {
-		// Range = 10; This corresponds to ±10V (T7), or ±11V (T8)
+		// Range = 10; This corresponds to Â±10V (T7), or Â±11V (T8)
 		WriteNameOrDie(handle, "AIN0_RANGE", 10);
 	}
 	// Negative channel = single ended (199). Only applies to the T7
 	if (deviceType == LJM_dtT7) {
 		WriteNameOrDie(handle, "AIN0_NEGATIVE_CH", 199);
 	}
-
+	// Settling configs only apply to the T4/T7
+	if (deviceType != LJM_dtT8) {
+		// Settling (in microseconds) = Auto (0)
+		WriteNameOrDie(handle, "AIN0_SETTLING_US", 0);
+	}
+	// AIN sampling rate in HZ = Auto (0). Only applies to the T8
+	if (deviceType == LJM_dtT8) {
+		WriteNameOrDie(handle, "AIN_SAMPLING_RATE_HZ", 0);
+	}
 
 	// Read AIN0 from the LabJack
 	err = LJM_eReadName(handle, NAME, &value);

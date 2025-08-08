@@ -11,9 +11,10 @@
  *		https://labjack.com/support/software/api/ljm
  *	Opening and Closing:
  *		https://labjack.com/support/software/api/ljm/function-reference/opening-and-closing
- *	Multiple Value Functions(such as eWriteNames):
+ *	Multiple Value Functions(such as eWriteNames and eReadNames):
  *		https://labjack.com/support/software/api/ljm/function-reference/multiple-value-functions
- *	Timing Functions(such as StartInterval):
+ *	Timing Functions(such as StartInterval, WaitForNextInterval and
+ *	CleanInterval):
  *		https://labjack.com/support/software/api/ljm/function-reference/timing-functions
  *
  * T-Series and I/O:
@@ -81,6 +82,16 @@ int main()
 	if (deviceType == LJM_dtT7) {
 		WriteNameOrDie(handle, "AIN0_NEGATIVE_CH", 199);
 		WriteNameOrDie(handle, "AIN1_NEGATIVE_CH", 199);
+	}
+	// Settling configs only apply to the T4/T7
+	if (deviceType != LJM_dtT8) {
+		// Settling (in microseconds) = Auto (0)
+		WriteNameOrDie(handle, "AIN0_SETTLING_US", 0);
+		WriteNameOrDie(handle, "AIN1_SETTLING_US", 0);
+	}
+	// AIN sampling rate in HZ = Auto (0). Only applies to the T8
+	if (deviceType == LJM_dtT8) {
+		WriteNameOrDie(handle, "AIN_SAMPLING_RATE_HZ", 0);
 	}
 
 	printf("\nStarting read loop.  Press Ctrl+c to stop.\n");
