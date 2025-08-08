@@ -16,7 +16,7 @@
  *		https://labjack.com/support/software/api/ljm/function-reference/opening-and-closing
  *	eWriteName:
  *		https://labjack.com/support/software/api/ljm/function-reference/ljmewritename
- *	eWriteNameArray:
+ *	Multiple Value Functions (such as eWriteNameArray and eReadNameArray):
  *		https://labjack.com/support/software/api/ljm/function-reference/multiple-value-functions
  *
  * T-Series and I/O:
@@ -32,30 +32,49 @@
 // ErrorCheck, etc.
 #include "../../LJM_Utilities.h"
 
-double GetNameOrDie(int handle, const char * name);
-
 void PrintAsBytes(int numValues, const double * values);
 
 int main()
 {
+	int err;
 	int handle;
 	enum {NUM_BYTES=4};
 	const double writeValues[NUM_BYTES] = {0x12, 0x34, 0x56, 0x78};
 	double readValues[NUM_BYTES];
+	int deviceType, ConnectionType, SerialNumber, IPAddress, Port,
+		MaxBytesPerMB;
+	double rxDioNum;
+	double txDioNum;
 
 	// Open first found LabJack
 	handle = OpenOrDie(LJM_dtANY, LJM_ctANY, "LJM_idANY");
 	// handle = OpenSOrDie("LJM_dtANY", "LJM_ctANY", "LJM_idANY");
 
-	PrintDeviceInfoFromHandle(handle);
-	printf("\n");
+	// Get device info
+	err = LJM_GetHandleInfo(handle, &deviceType, &ConnectionType,
+		&SerialNumber, &IPAddress, &Port, &MaxBytesPerMB);
+	ErrorCheck(err,
+		"PrintDeviceInfoFromHandle (LJM_GetHandleInfo)");
 
-	printf("Short FIO4 and FIO5 together to read back the same bytes:\n\n");
+	PrintDeviceInfo(deviceType, ConnectionType, SerialNumber, IPAddress, Port,
+		MaxBytesPerMB);
+	printf("\n");
+	
+	if(deviceType == LJM_dtT4) {
+		rxDioNum = 4;  // RX pin number = 4 (FIO4)
+		txDioNum = 5;  // TX pin number = 5 (FIO5)
+	}
+	else {
+		rxDioNum = 0;  // RX pin number = 0 (FIO0)
+		txDioNum = 1;  // TX pin number = 1 (FIO1)
+	}
+
+	printf("Short FIO%0.0f and FIO%0.0f together to read back the same bytes:\n\n", rxDioNum, txDioNum);
 
 	// Configure for loopback
 	WriteNameOrDie(handle, "ASYNCH_ENABLE", 0);
-	WriteNameOrDie(handle, "ASYNCH_RX_DIONUM", 0);
-	WriteNameOrDie(handle, "ASYNCH_TX_DIONUM", 1);
+	WriteNameOrDie(handle, "ASYNCH_RX_DIONUM", rxDioNum);
+	WriteNameOrDie(handle, "ASYNCH_TX_DIONUM", txDioNum);
 	WriteNameOrDie(handle, "ASYNCH_BAUD", 9600);
 	WriteNameOrDie(handle, "ASYNCH_NUM_DATA_BITS", 8);
 	WriteNameOrDie(handle, "ASYNCH_PARITY", 0);
@@ -82,16 +101,6 @@ int main()
 	WaitForUserIfWindows();
 
 	return LJME_NOERROR;
-}
-
-double GetNameOrDie(int handle, const char * name)
-{
-	double value;
-	int err = LJM_eReadName(handle, name, &value);
-	if (err != LJME_NOERROR) {
-		CouldNotRead(err, name);
-	}
-	return value;
 }
 
 void PrintAsBytes(int numValues, const double * values)
