@@ -16,10 +16,11 @@
  *		https://labjack.com/support/software/api/ljm
  *	Opening and Closing:
  *		https://labjack.com/support/software/api/ljm/function-reference/opening-and-closing
- *	Multiple Value Functions(such as eWriteNameByteArray):
- *		https://labjack.com/support/software/api/ljm/function-reference/multiple-value-functions
- *	Single Value Functions(such as eReadName):
+ *	Single Value Functions(such as eWriteName and eReadName):
  *		https://labjack.com/support/software/api/ljm/function-reference/single-value-functions
+ *	Multiple Value Functions(such as eWriteNameByteArray and
+ *  eReadNameByteArray):
+ *		https://labjack.com/support/software/api/ljm/function-reference/multiple-value-functions
  *
  * T-Series and I/O:
  *	Modbus Map:

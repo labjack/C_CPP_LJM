@@ -11,9 +11,10 @@
  *		https://labjack.com/support/software/api/ljm
  *	Opening and Closing:
  *		https://labjack.com/support/software/api/ljm/function-reference/opening-and-closing
- *	single Value Functions (like eReadName):
+ *	Single Value Functions (such as eWriteName and eReadName):
  *		https://labjack.com/support/software/api/ljm/function-reference/single-value-functions
-  *	Multiple Value Functions(such as eReadNameByteArray):
+ *	Multiple Value Functions(such as eWriteNameByteArray and
+ *  eReadNameByteArray):
  *		https://labjack.com/support/software/api/ljm/function-reference/multiple-value-functions
  *
  * T-Series and I/O:
@@ -21,12 +22,6 @@
  *		https://labjack.com/support/software/api/modbus/modbus-map
 **/
 
-#ifdef _WIN32
-	#include <winsock2.h>
-	#include <ws2tcpip.h>
-#else
-	#include <arpa/inet.h>  // For inet_ntoa()
-#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
