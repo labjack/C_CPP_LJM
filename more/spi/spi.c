@@ -29,9 +29,10 @@
  *		https://labjack.com/support/software/api/ljm
  *	Opening and Closing:
  *		https://labjack.com/support/software/api/ljm/function-reference/opening-and-closing
- *	eWriteName:
- *		https://labjack.com/support/software/api/ljm/function-reference/ljmewritename
- *	Multiple Value Functions(such as eWriteNameByteArray):
+ *	Single Value Functions (such as eWriteName and eReadName):
+ *		https://labjack.com/support/software/api/ljm/function-reference/single-value-functions
+ *	Multiple Value Functions(such as eWriteNameByteArray and
+ *	eReadNameByteArray):
  *		https://labjack.com/support/software/api/ljm/function-reference/multiple-value-functions
  *
  * T-Series and I/O:
@@ -82,6 +83,10 @@ void SPI(int handle)
 	char dataRead[4] = {0};
 
 	if (GetDeviceType(handle) == LJM_dtT4) {
+		// Configure FIO4 to FIO7 as digital I/O.
+		WriteNameOrDie(handle, "DIO_INHIBIT", 0xFFF0F);
+		WriteNameOrDie(handle, "DIO_ANALOG_ENABLE", 0x00000);
+
 		// Setting CS, CLK, MISO, and MOSI lines for the T4. FIO0 to FIO3 are
 		// reserved for analog inputs, and SPI requires digital lines.
 		WriteNameOrDie(handle, "SPI_CS_DIONUM", 5);  // CS is FIO5
