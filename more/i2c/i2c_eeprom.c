@@ -76,6 +76,10 @@ void i2c_eeprom(int handle)
 
 	// Configure the I2C communication.
 	if (GetDeviceType(handle) == LJM_dtT4) {
+		// Configure FIO4 and FIO5 as digital I/O.
+		WriteNameOrDie(handle, "DIO_INHIBIT", 0xFFFCF);
+		WriteNameOrDie(handle, "DIO_ANALOG_ENABLE", 0x00000);
+
 		// For the T4, using FIO4 and FIO5 for SCL and SDA pins. FIO0 to FIO3 are
 		// reserved for analog inputs, and digital lines are required.
 		WriteNameOrDie(handle, "I2C_SDA_DIONUM", 5);  // SDA pin number = 5 (FIO5)
