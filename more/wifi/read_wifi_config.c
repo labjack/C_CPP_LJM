@@ -15,6 +15,8 @@
  *		https://labjack.com/support/software/api/ljm/function-reference/ljmereadnames
  *	NumberToIP:
  *		https://labjack.com/support/software/api/ljm/function-reference/utility/ljmnumbertoip
+ *	eReadNameString:
+ *		https://labjack.com/support/software/api/ljm/function-reference/ljmereadnamestring
  *
  * T-Series and I/O:
  *	Modbus Map:
@@ -57,6 +59,9 @@ int main()
 	const char * STATUS_REGISTER = "WIFI_STATUS";
 	double status;
 
+	const char * SSID_REGISTER = "WIFI_SSID";
+	char ssid[LJM_STRING_ALLOCATION_SIZE];
+
 	// Open first found LabJack
 	handle = OpenOrDie(LJM_dtANY, LJM_ctANY, "LJM_idANY");
 	// handle = OpenSOrDie("LJM_dtANY", "LJM_ctANY", "LJM_idANY");
@@ -79,6 +84,9 @@ int main()
 	err = LJM_eReadName(handle, STATUS_REGISTER, &status);
 	ErrorCheck(err, "LJM_eReadName - %s", STATUS_REGISTER);
 
+	err = LJM_eReadNameString(handle, SSID_REGISTER, ssid);
+	ErrorCheck(err, "LJM_eReadNameString - %s", SSID_REGISTER);
+
 	printf("Wifi configurations:\n");
 	for (i=0; i<NUM_IP_FRAMES; i++) {
 		err = LJM_NumberToIP((unsigned int)aValuesIP[i], IPv4String);
@@ -92,6 +100,7 @@ int main()
 	}
 
 	printf("    %s : %.0f\n", STATUS_REGISTER, status);
+	printf("    %s : %s\n", SSID_REGISTER, ssid);
 
 	CloseOrDie(handle);
 
