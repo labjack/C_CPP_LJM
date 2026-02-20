@@ -8,11 +8,6 @@
  *
  * Relevant Documentation:
  *
- * This file was used to generate the data given here:
- *		https://labjack.com/support/app-notes/maximum-command-response
- * Lua scripts for speed testing can be found here:
- *		hhttps://labjack.com/support/software/examples/lua-scripting/benchmarking-tests
- *
  * LJM Library:
  *	LJM Library Installer:
  *		https://labjack.com/support/software/installers/ljm
@@ -20,10 +15,10 @@
  *		https://labjack.com/support/software/api/ljm
  *	Opening and Closing:
  *		https://labjack.com/support/software/api/ljm/function-reference/opening-and-closing
- *	Single Value Functions(such as eReadName):
+ *	Single Value Functions (such as eWriteName):
  *		https://labjack.com/support/software/api/ljm/function-reference/single-value-functions
- *	Raw Byte Functions:
- *		https://labjack.com/support/software/api/ljm/function-reference/lowlevel-functions/raw-byte-functions
+ *	eNames:
+ *		https://labjack.com/support/software/api/ljm/function-reference/ljmenames
  *
  * T-Series and I/O:
  *	Modbus Map:
@@ -32,6 +27,8 @@
  *		https://labjack.com/support/datasheets/t-series/digital-io
  *	Analog Inputs:
  *		https://labjack.com/support/datasheets/t-series/ain
+ *	DAC:
+ *		https://labjack.com/support/datasheets/t-series/dac
 **/
 
 // For printf
@@ -203,7 +200,10 @@ void RunSpeedTest(
 	// Add a frame for each register you want to read/write
 	for (i = 0; i < myTests.numAIN; i++) {
 		aNames[frame] = (char *) malloc (LJM_MAX_NAME_SIZE * sizeof(char));
-		sprintf(aNames[frame], "AIN%d", i);
+		if (GetDeviceType(handle) != LJM_dtT8 || i == 0)
+			sprintf(aNames[frame], "AIN%d", i);
+		else
+			sprintf(aNames[frame], "AIN%d_CAPTURE", i);
 		aWrites[frame] = LJM_READ;
 		aNumValues[frame] = 1;
 		aValues[frame] = 0;
@@ -305,11 +305,12 @@ void ConfigureAIN(const int handle, const struct WhatToModify myTests)
 	double T4RangeAIN_LV = 2.4; // LV channels range
 	double dioInhibit, dioAnalogEnable;
 
-	// T7 and T8 analog input range
+	// T7 and T8 analog input range. 10 = 10.0 V (T7) or 11.0 V (T8).
 	double rangeAIN = 10.0;
 
 	double resolutionAIN = 1;
-	double settlingIndexAIN = 0;
+	double settlingIndexAIN = 0;  // Settling settings ignored on the T8. 
+	double samplingRateAIN = 40000;  // Analog input sampling rate in Hz. T8 only.
 
 	printf("ConfigureAIN:\n");
 	printf("  resolutionAIN: %f\n", resolutionAIN);
@@ -337,6 +338,10 @@ void ConfigureAIN(const int handle, const struct WhatToModify myTests)
 			dioInhibit = dioAnalogEnable;
 			WriteNameOrDie(handle, "DIO_INHIBIT", dioInhibit);
 		}
+	}
+
+	if (GetDeviceType(handle) == LJM_dtT8) {
+		WriteNameOrDie(handle, "AIN_SAMPLING_RATE_HZ", samplingRateAIN);
 	}
 
 	for (i=0; i<myTests.numAIN; i++) {
