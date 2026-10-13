@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "thermocouple_example_inamp", "thermocouple_example_inamp.vcproj", "{612E1716-214C-45BC-8B90-95BAA40FE8E9}"
+Project("{8FC36AD0-180D-4b31-BFEA-FA04F593870E}") = "thermocouple_example_inamp", "thermocouple_example_inamp.vcproj", "{612E1716-214C-45BC-8B90-95BAA40FE8E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

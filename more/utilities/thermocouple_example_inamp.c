@@ -105,7 +105,7 @@ void GetReadingsInAmp(int handle, TCData tcData) {
         NUM_FRAMES,
         aAddresses,
         aTypes,
-        &aValues,
+        aValues,
         &errorAddress
     );
     ErrorCheckWithAddress(
