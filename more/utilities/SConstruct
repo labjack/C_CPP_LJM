@@ -28,7 +28,8 @@ examples_src = Split("""
     set_timeout.cpp
     stepwise_feedback.c
     t7_tcp_configure.c
-    thermocouple_example.c
+    thermocouple_example_ain_ef.c
+    thermocouple_example_inamp.c
 """)
 
 # Make

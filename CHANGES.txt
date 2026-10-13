@@ -1,6 +1,9 @@
 Version History
 ---------------
 
+2026-20-13 (LJM 1.2100)
+- Split thermocouple_example.c into two examples: thermocouple_example_ain_ef.c and thermocouple_example_inamp.c
+
 2021-08-20 (LJM 1.2100)
  - Updated thermocouple_example.c
  - Restructured examples and utility headers to compile with C89 standard (for older VS builds)

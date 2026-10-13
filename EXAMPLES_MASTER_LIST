@@ -101,7 +101,8 @@ more/utilities/SConstruct
 more/utilities/set_timeout.cpp
 more/utilities/stepwise_feedback.c
 more/utilities/t7_tcp_configure.c
-more/utilities/thermocouple_example.c
+more/utilities/thermocouple_example_ain_ef.c
+more/utilities/thermocouple_example_inamp.c
 more/watchdog/make.sh
 more/watchdog/read_watchdog_config.c
 more/watchdog/SConstruct
