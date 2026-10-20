@@ -61,15 +61,8 @@ typedef enum {
 typedef struct {
     TCType tcType;
 
-    // If taking a differential reading on a T7, posChannel should be an even
-    // numbered AIN connecting signal+, and signal- should be connected to
-    // the positive AIN channel plus one.
-    // Example: signal+=posChannel=0 (AIN0), signal-=negChannel=1 (AIN1).
-    int posChannel;
-
-    // negChannel value of 199 indicates single ended measurement.
-    // This config does nothing for the T4 and T8.
-    int negChannel;
+    // AIN number to get the thermocouple reading, f.e. 0 for AIN0.
+    int ainNumber;
 
     // Modbus address to read the CJC sensor at.
     int CJCAddress;
@@ -90,24 +83,24 @@ typedef struct {
 } TCData;
 
 void SetupAIN_EF(int handle, TCData tcData) {
+    const int CONFIG_A_BASE_ADDR = 9300;
+    const int CONFIG_B_BASE_ADDR = 9600;
+    const int CONFIG_D_BASE_ADDR = 10200;
+    const int CONFIG_E_BASE_ADDR = 10500;
     int err;
     enum{ NUM_FRAMES = 5 };
     int aAddresses[NUM_FRAMES];
     int aTypes[NUM_FRAMES];
     double aValues[NUM_FRAMES];
     int errorAddress = INITIAL_ERR_ADDRESS;
-    const int CONFIG_A_BASE_ADDR = 9300;
-    const int CONFIG_B_BASE_ADDR = 9600;
-    const int CONFIG_D_BASE_ADDR = 10200;
-    const int CONFIG_E_BASE_ADDR = 10500;
 
     // For setting up the AIN#_EF_INDEX (thermocouple type).
-    aAddresses[0] = 9000+2*tcData.posChannel;
+    aAddresses[0] = 9000+2*tcData.ainNumber;
     aTypes[0] = LJM_UINT32;
     aValues[0] = tcData.tcType;
 
     // For setting up the AIN#_EF_CONFIG_A (temperature units).
-    aAddresses[1] = CONFIG_A_BASE_ADDR+2*tcData.posChannel;
+    aAddresses[1] = CONFIG_A_BASE_ADDR+2*tcData.ainNumber;
     aTypes[1] = LJM_UINT32;
     switch(tcData.tempUnits) {
         case DEGK:
@@ -122,17 +115,17 @@ void SetupAIN_EF(int handle, TCData tcData) {
     }
 
     // For setting up the AIN#_EF_CONFIG_B (CJC address).
-    aAddresses[2] = CONFIG_B_BASE_ADDR+2*tcData.posChannel;
+    aAddresses[2] = CONFIG_B_BASE_ADDR+2*tcData.ainNumber;
     aTypes[2] = LJM_UINT32;
     aValues[2] = tcData.CJCAddress;
 
     // For setting up the AIN#_EF_CONFIG_D (CJC slope).
-    aAddresses[3] = CONFIG_D_BASE_ADDR+2*tcData.posChannel;
+    aAddresses[3] = CONFIG_D_BASE_ADDR+2*tcData.ainNumber;
     aTypes[3] = LJM_FLOAT32;
     aValues[3] = tcData.CJCSlope;
 
     // For setting up the AIN#_EF_CONFIG_E (CJC offset).
-    aAddresses[4] = CONFIG_E_BASE_ADDR+2*tcData.posChannel;
+    aAddresses[4] = CONFIG_E_BASE_ADDR+2*tcData.ainNumber;
     aTypes[4] = LJM_FLOAT32;
     aValues[4] = tcData.CJCOffset;
 
@@ -152,6 +145,9 @@ void SetupAIN_EF(int handle, TCData tcData) {
 }
 
 void GetReadingsAIN_EF(int handle, TCData tcData) {
+    const int READ_A_BASE_ADDR = 7000;
+    const int READ_B_BASE_ADDR = 7300;
+    const int READ_C_BASE_ADDR = 7600;
     int err;
     double TCTemp, TCVolts, CJTemp;
     enum{ NUM_FRAMES = 3 };
@@ -159,20 +155,17 @@ void GetReadingsAIN_EF(int handle, TCData tcData) {
     int aTypes[NUM_FRAMES];
     double aValues[NUM_FRAMES] = {0,0,0};
     int errorAddress = INITIAL_ERR_ADDRESS;
-    const int READ_A_BASE_ADDR = 7000;
-    const int READ_B_BASE_ADDR = 7300;
-    const int READ_C_BASE_ADDR = 7600;
 
     // For reading TC Temperature.
-    aAddresses[0] = READ_A_BASE_ADDR+2*tcData.posChannel;
+    aAddresses[0] = READ_A_BASE_ADDR+2*tcData.ainNumber;
     aTypes[0] = LJM_FLOAT32;
 
     // For reading TC Volts.
-    aAddresses[1] = READ_B_BASE_ADDR+2*tcData.posChannel;
+    aAddresses[1] = READ_B_BASE_ADDR+2*tcData.ainNumber;
     aTypes[1] = LJM_FLOAT32;
 
     // For reading CJC Temperature.
-    aAddresses[2] = READ_C_BASE_ADDR+2*tcData.posChannel;
+    aAddresses[2] = READ_C_BASE_ADDR+2*tcData.ainNumber;
     aTypes[2] = LJM_FLOAT32;
 
     err = LJM_eReadAddresses(
@@ -204,6 +197,9 @@ void GetReadingsAIN_EF(int handle, TCData tcData) {
 
 int main()
 {
+    const int AIN_RANGE_BASE_ADDR = 40000;
+    const int RESOLUTION_INDEX_BASE_ADDR = 41500;
+    const int NEGATIVE_CH_BASE_ADDR = 41000;
     int err, handle, i, deviceType, connectionType, serialNumber;
     int ipAddress, portOrPipe, packetMaxBytes;
     // Initialize tcData struct to valid values.
@@ -213,14 +209,11 @@ int main()
     TCData tcData = {
         KTYPE,      // Type K thermocouple.
         0,          // Thermocouple connected to AIN0.
-        199,        // GND for negChannel (should be ignored for T4/T8).
         60052,      // Use TEMPERATURE_DEVICE_K for CJC.
         1,          // CJC Slope. Use 55.56 for LM34.
         0,          // CJC Offset. Use 255.37 for LM34.
         DEGC // Output temperature units.
     };
-    const int RESOLUTION_INDEX_BASE_ADDR = 41500;
-    const int NEGATIVE_CH_BASE_ADDR = 41000;
 
     // Open first found LabJack.
     handle = OpenOrDie(LJM_dtANY, LJM_ctANY, "LJM_idANY");
@@ -247,10 +240,21 @@ int main()
         packetMaxBytes
     );
 
+    SetupAIN_EF(handle, tcData);
+
+    // If you set range according to the max TC voltage amplitude,
+    // the device will use the best/closest setting available.
+    err = LJM_eWriteAddress(
+        handle,
+        AIN_RANGE_BASE_ADDR+tcData.ainNumber,
+        LJM_FLOAT32,
+        0.07 // Will use ±0.1V on T7, ±0.075V on T8.
+    );
+    ErrorCheck(err, "Setting AIN range");
     // Set the resolution index to the default setting (value=0).
     err = LJM_eWriteAddress(
         handle,
-        RESOLUTION_INDEX_BASE_ADDR+tcData.posChannel,
+        RESOLUTION_INDEX_BASE_ADDR+tcData.ainNumber,
         LJM_UINT16,
         0
     );
@@ -260,14 +264,12 @@ int main()
     if(deviceType == LJM_dtT7){
         err = LJM_eWriteAddress(
             handle,
-            NEGATIVE_CH_BASE_ADDR+tcData.posChannel,
+            NEGATIVE_CH_BASE_ADDR+tcData.ainNumber,
             LJM_UINT16,
-            tcData.negChannel
+            LJM_GND // 199, single ended measurement
         );
         ErrorCheck(err, "Setting T7 negChannel");
     }
-
-    SetupAIN_EF(handle, tcData);
 
     printf("\nPress ctrl + c to stop\n");
     for (i=0; ; i++) {

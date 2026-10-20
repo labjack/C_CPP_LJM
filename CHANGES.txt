@@ -1,6 +1,9 @@
 Version History
 ---------------
 
+2026-10-20 (LJM 1.2305)
+- Add AIN#_RANGE configuration to thermocouple_example_ain_ef.c
+
 2026-10-13 (LJM 1.2305)
 - Split thermocouple_example.c into two examples: thermocouple_example_ain_ef.c and thermocouple_example_inamp.c
 
