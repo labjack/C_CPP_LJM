@@ -2,8 +2,8 @@
 #
 # Purpose: Tests generate_example_accessories.rb
 #
-# Run:
-#   $ rspec generate_example_accessories_test.rb
+# Run (from the scripts directory):
+#   $ rspec test/generate_example_accessories_test.rb
 #
 # Requirements: rspec
 # $ gem install rspec
@@ -58,12 +58,12 @@ end
 
 describe ExampleAccessoryGenerator, "#get_vs_subpath" do
   it "does not include . as a path" do
-    test_result = ExampleAccessoryGenerator.new.get_vs_subpath('.', 'test_example')
+    test_result = ExampleAccessoryGenerator.new.get_vs_subpath('visual_studio_2008', '.', 'test_example')
     expect(test_result).to eq('visual_studio_2008/test_example')
   end
 
   it "includes category in path" do
-    test_result = ExampleAccessoryGenerator.new.get_vs_subpath('test', 'test_example')
+    test_result = ExampleAccessoryGenerator.new.get_vs_subpath('visual_studio_2008', 'test', 'test_example')
     expect(test_result).to eq('visual_studio_2008/test/test_example')
   end
 end
@@ -85,7 +85,7 @@ describe ExampleAccessoryGenerator, "#generate_vs_files" do
       expect(mode).to eq('w')
     end
 
-    gen.generate_vs('foo', 'test_example', '.c')
+    gen.generate_vs('visual_studio_2008', 'foo', 'test_example', '.c')
   end
 end
 
@@ -107,7 +107,7 @@ describe ExampleAccessoryGenerator, "#process_for_visual_studio" do
       "../visual_studio_2008/foo/test_example/test_example.vcproj").and_return true
     expect(gen).to_not receive(:generate_vs)
 
-    gen.process_for_visual_studio('foo', 'test_example', '.c')
+    gen.process_for_visual_studio('visual_studio_2008', 'foo', 'test_example', '.c')
   end
 
   it "adds example entries to vs export list, generates files" do
@@ -122,7 +122,7 @@ describe ExampleAccessoryGenerator, "#process_for_visual_studio" do
     allow(gen).to receive(:file_exist?).with(kind_of(String)).and_return false
     expect(gen).to receive(:generate_vs)
 
-    gen.process_for_visual_studio('foo', 'test_example', '.c')
+    gen.process_for_visual_studio('visual_studio_2008', 'foo', 'test_example', '.c')
     expect(mock_file.lines.size()).to eq(2)
     expect(mock_file.lines.include? "visual_studio_2008/foo/test_example/test_example.vcproj")
     expect(mock_file.lines.include? "visual_studio_2008/foo/test_example/test_example.sln")

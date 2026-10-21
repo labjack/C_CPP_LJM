@@ -5,9 +5,6 @@
 #
 # Arguments: --verbose (default is silent)
 #            --no-visual-studio (default is yes)
-#
-# Test: Run generate_example_accessories_test.rb.
-#   See generate_example_accessories_test.rb for details.
 
 require 'erb'
 require 'fileutils'
@@ -21,82 +18,92 @@ class ExampleAccessoryGenerator < ExampleAccessoryBase
   @@MAKE_ALL_ERB = File.join(@@REL_TO_TEMPLATES, "#{@@MAKE_ALL}.erb")
   @@MAKE_ERB = File.join(@@REL_TO_TEMPLATES, "#{@@MAKE}.erb")
   @@SCONS_ERB = File.join(@@REL_TO_TEMPLATES, "#{@@SCONS}.erb")
-  @@LJM_EXAMPLE_SLN_ERB = File.join(@@REL_TO_TEMPLATES, "ljm_example.sln.erb")
-  @@LJM_EXAMPLE_VCPROJ_ERB = File.join(@@REL_TO_TEMPLATES, "ljm_example.vcproj.erb")
-
-  @@VISUAL_STUDIO_DIR = 'visual_studio_2008'
+  @@VISUAL_STUDIO_DIRS = ['visual_studio_2008', 'visual_studio_2022']
 
   def initialize()
     super
   end
 
   def get_uid()
-  	`uuidgen`.strip().upcase()
+    `uuidgen`.strip().upcase()
   end
 
   def get_vs_sln_path(vs_path, example_base_name)
-  	"#{vs_path}/#{example_base_name}.sln"
+    "#{vs_path}/#{example_base_name}.sln"
   end
 
-  def get_vs_vcproj_path(vs_path, example_base_name)
-  	"#{vs_path}/#{example_base_name}.vcproj"
+  def get_vs_vcproj_path(vsver, vs_path, example_base_name)
+    if vsver == 'visual_studio_2008'
+      extension_name = 'vcproj'
+    else
+      extension_name = 'vcxproj'
+    end
+    "#{vs_path}/#{example_base_name}.#{extension_name}"
   end
 
-  def get_vs_subpath(vs_path, example_base_name)
+  def get_vs_subpath(vsver, vs_path, example_base_name)
     if vs_path == '.'
-      return "#{@@VISUAL_STUDIO_DIR}/#{example_base_name}"
+      return "#{vsver}/#{example_base_name}"
     end
 
-    "#{@@VISUAL_STUDIO_DIR}/#{vs_path}/#{example_base_name}"
+    "#{vsver}/#{vs_path}/#{example_base_name}"
   end
 
-  def generate_vs(category_path, example_base_name, example_extension)
-  	guid_sln = get_uid()
-  	guid_vcproj = get_uid()
+  def generate_vs(vsver, category_path, example_base_name, example_extension)
+    guid_sln = get_uid()
+    guid_vcproj = get_uid()
     if guid_sln == guid_vcproj
       raise 'guid_sln == guid_vcproj'
     end
 
-  	vs_path = append_rel_path(get_vs_subpath(category_path, example_base_name))
+    if vsver == 'visual_studio_2008'
+      sln_erb = File.join(@@REL_TO_TEMPLATES, "ljm_example.sln.erb")
+      vcproj_erb = File.join(@@REL_TO_TEMPLATES, "ljm_example.vcproj.erb")
+    else
+      sln_erb = File.join(@@REL_TO_TEMPLATES, "ljm_example_vs2022.sln.erb")
+      vcproj_erb = File.join(@@REL_TO_TEMPLATES, "ljm_example.vcxproj.erb")
+    end
 
-  	relative_path = '..\\..'
-  	if category_path != '.'
-  		relative_path += '\\..\\' + category_path
+    vs_path = append_rel_path(get_vs_subpath(vsver, category_path, example_base_name))
+
+    relative_path = '..\\..'
+    if category_path != '.'
+        relative_path += '\\..\\' + category_path
       category_path.count('/').times do |iter|
         relative_path = '..\\' + relative_path
       end
-  	end
-  	relative_path += '\\' # Windows path gets inserted into vcproj
+    end
+    relative_path += '\\' # Windows path gets inserted into vcproj
     relative_path.gsub!('/', '\\')
 
-  	verbose_puts "    #{[vs_path, relative_path, example_base_name, example_extension].join(' ')}"
+    verbose_puts "    #{[vs_path, relative_path, example_base_name, example_extension].join(' ')}"
 
     FileUtils.mkdir_p vs_path
 
-    template = ERB.new File.new(@@LJM_EXAMPLE_SLN_ERB, 'r').read
+    template = ERB.new File.new(sln_erb, 'r').read
     File.open(get_vs_sln_path(vs_path, example_base_name), 'w') {|f| f.write(template.result(binding)) }
 
-    template = ERB.new File.new(@@LJM_EXAMPLE_VCPROJ_ERB, 'r').read
-    File.open(get_vs_vcproj_path(vs_path, example_base_name), 'w') {|f| f.write(template.result(binding)) }
+    template = ERB.new File.new(vcproj_erb, 'r').read
+    File.open(get_vs_vcproj_path(vsver, vs_path, example_base_name), 'w') {|f| f.write(template.result(binding)) }
   end
 
   # Adds the example to the Visual Studio export list
   # Generates the relevant .vcproj and .sln files for the file if they
   #   don't exist.
-  def process_for_visual_studio(category_path, example_base_name, example_extension)
-  	vs_path = get_vs_subpath(category_path, example_base_name)
+  def process_for_visual_studio(vsver, category_path, example_base_name, example_extension)
+    vs_path = get_vs_subpath(vsver, category_path, example_base_name)
 
     File.open(@@VS_MASTER_LIST, 'a') do |file|
       file.write("#{get_vs_sln_path(vs_path, example_base_name)}\n")
-      file.write("#{get_vs_vcproj_path(vs_path, example_base_name)}\n")
+      file.write("#{get_vs_vcproj_path(vsver, vs_path, example_base_name)}\n")
     end
 
     vs_path = append_rel_path(vs_path)
     vs_sln = get_vs_sln_path(vs_path, example_base_name)
-    vs_vcproj = get_vs_vcproj_path(vs_path, example_base_name)
+    vs_vcproj = get_vs_vcproj_path(vsver, vs_path, example_base_name)
 
     if not file_exist? vs_sln or not file_exist? vs_vcproj
-      generate_vs(category_path, example_base_name, example_extension)
+      generate_vs(vsver, category_path, example_base_name, example_extension)
     end
   end
 
@@ -165,7 +172,9 @@ class ExampleAccessoryGenerator < ExampleAccessoryBase
     for example in examples.each
       ext = File.extname(example)
       basename = File.basename(example, ext)
-      process_for_visual_studio(dir, basename, ext)
+      @@VISUAL_STUDIO_DIRS.each do |vsver|
+        process_for_visual_studio(vsver, dir, basename, ext)
+      end
     end
   end
 
@@ -185,7 +194,7 @@ class ExampleAccessoryGenerator < ExampleAccessoryBase
       generate_scons(dirs, dir_hash)
 
       if @visual_studio
-        verbose_puts "  visual studio .vcproj and .vs files..."
+        verbose_puts "  visual studio .vcxproj and .vs files..."
 
         # Clear out the existing file
         File.open(@@VS_MASTER_LIST, 'w')
