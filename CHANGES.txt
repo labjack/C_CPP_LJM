@@ -1,6 +1,9 @@
 Version History
 ---------------
 
+2026-10-21 (LJM 1.2305)
+- Add VS2022 project files and related ruby generation script changes.
+
 2026-10-20 (LJM 1.2305)
 - Add AIN#_RANGE configuration to thermocouple_example_ain_ef.c
 
