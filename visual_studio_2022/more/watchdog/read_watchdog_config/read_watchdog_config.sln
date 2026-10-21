@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{39400ED2-5A19-4F49-868C-3F34FB90971F}") = "read_watchdog_config", "read_watchdog_config.vcxproj", "{CA2EE79F-D2AF-4EEE-A80C-1AF9915A1071}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {CA2EE79F-D2AF-4EEE-A80C-1AF9915A1071}.Debug|Win32.ActiveCfg = Debug|Win32
+        {CA2EE79F-D2AF-4EEE-A80C-1AF9915A1071}.Debug|Win32.Build.0 = Debug|Win32
+        {CA2EE79F-D2AF-4EEE-A80C-1AF9915A1071}.Debug|x64.ActiveCfg = Debug|x64
+        {CA2EE79F-D2AF-4EEE-A80C-1AF9915A1071}.Debug|x64.Build.0 = Debug|x64
+        {CA2EE79F-D2AF-4EEE-A80C-1AF9915A1071}.Release|Win32.ActiveCfg = Release|Win32
+        {CA2EE79F-D2AF-4EEE-A80C-1AF9915A1071}.Release|Win32.Build.0 = Release|Win32
+        {CA2EE79F-D2AF-4EEE-A80C-1AF9915A1071}.Release|x64.ActiveCfg = Release|x64
+        {CA2EE79F-D2AF-4EEE-A80C-1AF9915A1071}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

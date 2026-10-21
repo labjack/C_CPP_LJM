@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{1354796A-18CB-444D-AB64-E577E5A37C17}") = "single_dio_read", "single_dio_read.vcxproj", "{3ED2BC86-145C-4BCE-BEAE-76A05D9822C1}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {3ED2BC86-145C-4BCE-BEAE-76A05D9822C1}.Debug|Win32.ActiveCfg = Debug|Win32
+        {3ED2BC86-145C-4BCE-BEAE-76A05D9822C1}.Debug|Win32.Build.0 = Debug|Win32
+        {3ED2BC86-145C-4BCE-BEAE-76A05D9822C1}.Debug|x64.ActiveCfg = Debug|x64
+        {3ED2BC86-145C-4BCE-BEAE-76A05D9822C1}.Debug|x64.Build.0 = Debug|x64
+        {3ED2BC86-145C-4BCE-BEAE-76A05D9822C1}.Release|Win32.ActiveCfg = Release|Win32
+        {3ED2BC86-145C-4BCE-BEAE-76A05D9822C1}.Release|Win32.Build.0 = Release|Win32
+        {3ED2BC86-145C-4BCE-BEAE-76A05D9822C1}.Release|x64.ActiveCfg = Release|x64
+        {3ED2BC86-145C-4BCE-BEAE-76A05D9822C1}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

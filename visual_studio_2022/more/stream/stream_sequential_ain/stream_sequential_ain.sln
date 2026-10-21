@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{97EC6274-5CFA-4A4F-9481-BA2BC3B0EA7C}") = "stream_sequential_ain", "stream_sequential_ain.vcxproj", "{DB9D639B-6920-4DB2-88C0-FA4EED4276C9}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {DB9D639B-6920-4DB2-88C0-FA4EED4276C9}.Debug|Win32.ActiveCfg = Debug|Win32
+        {DB9D639B-6920-4DB2-88C0-FA4EED4276C9}.Debug|Win32.Build.0 = Debug|Win32
+        {DB9D639B-6920-4DB2-88C0-FA4EED4276C9}.Debug|x64.ActiveCfg = Debug|x64
+        {DB9D639B-6920-4DB2-88C0-FA4EED4276C9}.Debug|x64.Build.0 = Debug|x64
+        {DB9D639B-6920-4DB2-88C0-FA4EED4276C9}.Release|Win32.ActiveCfg = Release|Win32
+        {DB9D639B-6920-4DB2-88C0-FA4EED4276C9}.Release|Win32.Build.0 = Release|Win32
+        {DB9D639B-6920-4DB2-88C0-FA4EED4276C9}.Release|x64.ActiveCfg = Release|x64
+        {DB9D639B-6920-4DB2-88C0-FA4EED4276C9}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

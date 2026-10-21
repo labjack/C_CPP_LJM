@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{90B3EEC1-CA27-401C-B0EC-E234744397A4}") = "get_disk_info", "get_disk_info.vcxproj", "{40D956D3-7714-4C91-8295-6976EBD9898C}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {40D956D3-7714-4C91-8295-6976EBD9898C}.Debug|Win32.ActiveCfg = Debug|Win32
+        {40D956D3-7714-4C91-8295-6976EBD9898C}.Debug|Win32.Build.0 = Debug|Win32
+        {40D956D3-7714-4C91-8295-6976EBD9898C}.Debug|x64.ActiveCfg = Debug|x64
+        {40D956D3-7714-4C91-8295-6976EBD9898C}.Debug|x64.Build.0 = Debug|x64
+        {40D956D3-7714-4C91-8295-6976EBD9898C}.Release|Win32.ActiveCfg = Release|Win32
+        {40D956D3-7714-4C91-8295-6976EBD9898C}.Release|Win32.Build.0 = Release|Win32
+        {40D956D3-7714-4C91-8295-6976EBD9898C}.Release|x64.ActiveCfg = Release|x64
+        {40D956D3-7714-4C91-8295-6976EBD9898C}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

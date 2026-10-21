@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{FFD45701-20C2-4C4A-9FC2-FA55B2E88D99}") = "write_device_name_string", "write_device_name_string.vcxproj", "{8C17B200-2528-4C0B-B079-6A4B1E485C30}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {8C17B200-2528-4C0B-B079-6A4B1E485C30}.Debug|Win32.ActiveCfg = Debug|Win32
+        {8C17B200-2528-4C0B-B079-6A4B1E485C30}.Debug|Win32.Build.0 = Debug|Win32
+        {8C17B200-2528-4C0B-B079-6A4B1E485C30}.Debug|x64.ActiveCfg = Debug|x64
+        {8C17B200-2528-4C0B-B079-6A4B1E485C30}.Debug|x64.Build.0 = Debug|x64
+        {8C17B200-2528-4C0B-B079-6A4B1E485C30}.Release|Win32.ActiveCfg = Release|Win32
+        {8C17B200-2528-4C0B-B079-6A4B1E485C30}.Release|Win32.Build.0 = Release|Win32
+        {8C17B200-2528-4C0B-B079-6A4B1E485C30}.Release|x64.ActiveCfg = Release|x64
+        {8C17B200-2528-4C0B-B079-6A4B1E485C30}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{B70F1059-F074-40EA-B36B-20CAA445877A}") = "stream_burst_test", "stream_burst_test.vcxproj", "{237A06C8-FB05-47A7-9900-BAADDBC3E93D}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {237A06C8-FB05-47A7-9900-BAADDBC3E93D}.Debug|Win32.ActiveCfg = Debug|Win32
+        {237A06C8-FB05-47A7-9900-BAADDBC3E93D}.Debug|Win32.Build.0 = Debug|Win32
+        {237A06C8-FB05-47A7-9900-BAADDBC3E93D}.Debug|x64.ActiveCfg = Debug|x64
+        {237A06C8-FB05-47A7-9900-BAADDBC3E93D}.Debug|x64.Build.0 = Debug|x64
+        {237A06C8-FB05-47A7-9900-BAADDBC3E93D}.Release|Win32.ActiveCfg = Release|Win32
+        {237A06C8-FB05-47A7-9900-BAADDBC3E93D}.Release|Win32.Build.0 = Release|Win32
+        {237A06C8-FB05-47A7-9900-BAADDBC3E93D}.Release|x64.ActiveCfg = Release|x64
+        {237A06C8-FB05-47A7-9900-BAADDBC3E93D}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

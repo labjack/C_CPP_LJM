@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{406B9A1B-1450-48E1-AA2D-DBD7924C8C6E}") = "read_wifi_rssi", "read_wifi_rssi.vcxproj", "{3B134EE7-542E-4EF2-9AD1-C8BDDCEFBADE}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {3B134EE7-542E-4EF2-9AD1-C8BDDCEFBADE}.Debug|Win32.ActiveCfg = Debug|Win32
+        {3B134EE7-542E-4EF2-9AD1-C8BDDCEFBADE}.Debug|Win32.Build.0 = Debug|Win32
+        {3B134EE7-542E-4EF2-9AD1-C8BDDCEFBADE}.Debug|x64.ActiveCfg = Debug|x64
+        {3B134EE7-542E-4EF2-9AD1-C8BDDCEFBADE}.Debug|x64.Build.0 = Debug|x64
+        {3B134EE7-542E-4EF2-9AD1-C8BDDCEFBADE}.Release|Win32.ActiveCfg = Release|Win32
+        {3B134EE7-542E-4EF2-9AD1-C8BDDCEFBADE}.Release|Win32.Build.0 = Release|Win32
+        {3B134EE7-542E-4EF2-9AD1-C8BDDCEFBADE}.Release|x64.ActiveCfg = Release|x64
+        {3B134EE7-542E-4EF2-9AD1-C8BDDCEFBADE}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

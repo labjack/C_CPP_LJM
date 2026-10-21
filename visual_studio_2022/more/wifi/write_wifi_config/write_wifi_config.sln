@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{153F3919-F116-4418-BB8D-67559188F1FA}") = "write_wifi_config", "write_wifi_config.vcxproj", "{9A2C816D-1E7C-4D6B-8E29-B0A2A83D8159}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {9A2C816D-1E7C-4D6B-8E29-B0A2A83D8159}.Debug|Win32.ActiveCfg = Debug|Win32
+        {9A2C816D-1E7C-4D6B-8E29-B0A2A83D8159}.Debug|Win32.Build.0 = Debug|Win32
+        {9A2C816D-1E7C-4D6B-8E29-B0A2A83D8159}.Debug|x64.ActiveCfg = Debug|x64
+        {9A2C816D-1E7C-4D6B-8E29-B0A2A83D8159}.Debug|x64.Build.0 = Debug|x64
+        {9A2C816D-1E7C-4D6B-8E29-B0A2A83D8159}.Release|Win32.ActiveCfg = Release|Win32
+        {9A2C816D-1E7C-4D6B-8E29-B0A2A83D8159}.Release|Win32.Build.0 = Release|Win32
+        {9A2C816D-1E7C-4D6B-8E29-B0A2A83D8159}.Release|x64.ActiveCfg = Release|x64
+        {9A2C816D-1E7C-4D6B-8E29-B0A2A83D8159}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

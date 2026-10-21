@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{A3DB71A5-5E19-40D7-9378-EF998CEF7063}") = "print_working_directory", "print_working_directory.vcxproj", "{D57E6688-A90E-4B4B-B5D9-CD90BA70812E}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {D57E6688-A90E-4B4B-B5D9-CD90BA70812E}.Debug|Win32.ActiveCfg = Debug|Win32
+        {D57E6688-A90E-4B4B-B5D9-CD90BA70812E}.Debug|Win32.Build.0 = Debug|Win32
+        {D57E6688-A90E-4B4B-B5D9-CD90BA70812E}.Debug|x64.ActiveCfg = Debug|x64
+        {D57E6688-A90E-4B4B-B5D9-CD90BA70812E}.Debug|x64.Build.0 = Debug|x64
+        {D57E6688-A90E-4B4B-B5D9-CD90BA70812E}.Release|Win32.ActiveCfg = Release|Win32
+        {D57E6688-A90E-4B4B-B5D9-CD90BA70812E}.Release|Win32.Build.0 = Release|Win32
+        {D57E6688-A90E-4B4B-B5D9-CD90BA70812E}.Release|x64.ActiveCfg = Release|x64
+        {D57E6688-A90E-4B4B-B5D9-CD90BA70812E}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

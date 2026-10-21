@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{3C68B1E6-BCD8-40D1-A869-1A94FED0E0C0}") = "thermocouple_example_inamp", "thermocouple_example_inamp.vcxproj", "{D4B3963B-58D5-402D-BCEC-47C0905BE56E}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {D4B3963B-58D5-402D-BCEC-47C0905BE56E}.Debug|Win32.ActiveCfg = Debug|Win32
+        {D4B3963B-58D5-402D-BCEC-47C0905BE56E}.Debug|Win32.Build.0 = Debug|Win32
+        {D4B3963B-58D5-402D-BCEC-47C0905BE56E}.Debug|x64.ActiveCfg = Debug|x64
+        {D4B3963B-58D5-402D-BCEC-47C0905BE56E}.Debug|x64.Build.0 = Debug|x64
+        {D4B3963B-58D5-402D-BCEC-47C0905BE56E}.Release|Win32.ActiveCfg = Release|Win32
+        {D4B3963B-58D5-402D-BCEC-47C0905BE56E}.Release|Win32.Build.0 = Release|Win32
+        {D4B3963B-58D5-402D-BCEC-47C0905BE56E}.Release|x64.ActiveCfg = Release|x64
+        {D4B3963B-58D5-402D-BCEC-47C0905BE56E}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

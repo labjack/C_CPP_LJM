@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{ADE884FC-139E-43DA-9BFA-E6076791B553}") = "stream_callback", "stream_callback.vcxproj", "{7E3C82F8-42C5-45BD-B57B-0FD82A5A7595}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {7E3C82F8-42C5-45BD-B57B-0FD82A5A7595}.Debug|Win32.ActiveCfg = Debug|Win32
+        {7E3C82F8-42C5-45BD-B57B-0FD82A5A7595}.Debug|Win32.Build.0 = Debug|Win32
+        {7E3C82F8-42C5-45BD-B57B-0FD82A5A7595}.Debug|x64.ActiveCfg = Debug|x64
+        {7E3C82F8-42C5-45BD-B57B-0FD82A5A7595}.Debug|x64.Build.0 = Debug|x64
+        {7E3C82F8-42C5-45BD-B57B-0FD82A5A7595}.Release|Win32.ActiveCfg = Release|Win32
+        {7E3C82F8-42C5-45BD-B57B-0FD82A5A7595}.Release|Win32.Build.0 = Release|Win32
+        {7E3C82F8-42C5-45BD-B57B-0FD82A5A7595}.Release|x64.ActiveCfg = Release|x64
+        {7E3C82F8-42C5-45BD-B57B-0FD82A5A7595}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

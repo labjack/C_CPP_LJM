@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{B8D2502D-ADB8-4D34-A08C-81B2981EDC7A}") = "stepwise_feedback", "stepwise_feedback.vcxproj", "{E86BB6AD-BEC1-45F9-8375-4912B710A029}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {E86BB6AD-BEC1-45F9-8375-4912B710A029}.Debug|Win32.ActiveCfg = Debug|Win32
+        {E86BB6AD-BEC1-45F9-8375-4912B710A029}.Debug|Win32.Build.0 = Debug|Win32
+        {E86BB6AD-BEC1-45F9-8375-4912B710A029}.Debug|x64.ActiveCfg = Debug|x64
+        {E86BB6AD-BEC1-45F9-8375-4912B710A029}.Debug|x64.Build.0 = Debug|x64
+        {E86BB6AD-BEC1-45F9-8375-4912B710A029}.Release|Win32.ActiveCfg = Release|Win32
+        {E86BB6AD-BEC1-45F9-8375-4912B710A029}.Release|Win32.Build.0 = Release|Win32
+        {E86BB6AD-BEC1-45F9-8375-4912B710A029}.Release|x64.ActiveCfg = Release|x64
+        {E86BB6AD-BEC1-45F9-8375-4912B710A029}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

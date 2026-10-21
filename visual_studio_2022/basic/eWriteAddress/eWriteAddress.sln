@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{38856005-402E-41B5-B624-3E2142FFEFEA}") = "eWriteAddress", "eWriteAddress.vcxproj", "{D16A9C93-674D-47B2-975E-DA9A89C289FE}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Win32 = Debug|Win32
+        Debug|x64 = Debug|x64
+        Release|Win32 = Release|Win32
+        Release|x64 = Release|x64
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {D16A9C93-674D-47B2-975E-DA9A89C289FE}.Debug|Win32.ActiveCfg = Debug|Win32
+        {D16A9C93-674D-47B2-975E-DA9A89C289FE}.Debug|Win32.Build.0 = Debug|Win32
+        {D16A9C93-674D-47B2-975E-DA9A89C289FE}.Debug|x64.ActiveCfg = Debug|x64
+        {D16A9C93-674D-47B2-975E-DA9A89C289FE}.Debug|x64.Build.0 = Debug|x64
+        {D16A9C93-674D-47B2-975E-DA9A89C289FE}.Release|Win32.ActiveCfg = Release|Win32
+        {D16A9C93-674D-47B2-975E-DA9A89C289FE}.Release|Win32.Build.0 = Release|Win32
+        {D16A9C93-674D-47B2-975E-DA9A89C289FE}.Release|x64.ActiveCfg = Release|x64
+        {D16A9C93-674D-47B2-975E-DA9A89C289FE}.Release|x64.Build.0 = Release|x64
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal
